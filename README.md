@@ -1,4 +1,4 @@
-# doi
+# DOI Toolset
 A generic DOI Toolset to generate/administer DOI in a library
 Order inwhich things will be done
 1 - get doi
