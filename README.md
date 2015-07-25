@@ -5,3 +5,5 @@ Order inwhich things will be done
 2 - update doi
 3 - administer doi
 4 - build a ui
+
+# Getting Started

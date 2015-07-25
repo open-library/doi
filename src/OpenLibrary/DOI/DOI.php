@@ -1,0 +1,38 @@
+<?php
+    /**
+     * Created by PhpStorm.
+     * User: skhanker
+     * Date: 24/07/2015
+     * Time: 10:59 AM
+     */
+
+    namespace OpenLibrary\DOI;
+
+
+    class DOI
+    {
+
+        private $directoryIndicator = 10;
+
+        private $registrantCode;
+
+        private $registrantSubdivision;
+
+        function __construct ($rc, $sd)
+        {
+            $this->registrantCode = $rc;
+            $this->registrantSubdivision = $sd;
+        }
+
+        public function resolve ($doi){
+
+        }
+
+        public function create () {
+
+        }
+
+        private function getPrefix(){
+            return implode(".",[$this->directoryIndicator,$this->registrantCode, $this->registrantSubdivision, "%2F"]);
+        }
+    }
