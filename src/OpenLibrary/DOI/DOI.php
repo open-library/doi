@@ -28,10 +28,14 @@
         }
 
         public function create () {
-            return $this->getPrefix();
+            return $this->getPrefix() . "%2F" . $this->getSuffix();
         }
 
         private function getPrefix(){
-            return implode(".",array_filter([$this->directoryIndicator,$this->registrantCode, $this->registrantSubdivision, "%2F"]));
+            return implode(".",array_filter([$this->directoryIndicator,$this->registrantCode, $this->registrantSubdivision]));
+        }
+
+        private function getSuffix(){
+            return "";
         }
     }
