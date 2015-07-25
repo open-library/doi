@@ -8,7 +8,6 @@
 
     namespace OpenLibrary\DOI;
 
-
     class DOI
     {
 
@@ -18,7 +17,7 @@
 
         private $registrantSubdivision;
 
-        function __construct ($rc, $sd)
+        function __construct ($rc = null, $sd = null)
         {
             $this->registrantCode = $rc;
             $this->registrantSubdivision = $sd;
@@ -29,10 +28,10 @@
         }
 
         public function create () {
-
+            return $this->getPrefix();
         }
 
         private function getPrefix(){
-            return implode(".",[$this->directoryIndicator,$this->registrantCode, $this->registrantSubdivision, "%2F"]);
+            return implode(".",array_filter([$this->directoryIndicator,$this->registrantCode, $this->registrantSubdivision, "%2F"]));
         }
     }
