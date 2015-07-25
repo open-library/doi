@@ -51,8 +51,6 @@
 
         private function encodeDOI($doi){
 
-            $doi= str_replace("/","%2F",$doi);
-
             # Mandatory
             $doi= str_replace("%","%25",$doi);
             $doi= str_replace('"',"%22",$doi);
@@ -72,6 +70,9 @@
             $doi= str_replace("|","%7C",$doi);
             $doi= str_replace("\\","%5C",$doi);
             $doi= str_replace("+","%2B",$doi);
+
+            # Replace / with %2F
+            $doi= str_replace("/","%2F",$doi);
 
             return $doi;
         }
