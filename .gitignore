@@ -36,8 +36,8 @@ atlassian-ide-plugin.xml
 
 # All Generated Folders #
 #########################
-./vendor/
-./vendor/*
+vendor/
+vendor/*
 
 # not this file
 !.gitignore

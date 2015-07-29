@@ -5,7 +5,7 @@
      * Date: 15-07-29
      * Time: 01:07
      */
-    namespace OpenLibrary\DOI\RegistrationAgency\DataCite;
+    namespace OpenLibrary\DOI\RegistrationAgency\DataCite\Profiles;
     /**
      * Class MetadataProfileException
      *

@@ -8,45 +8,31 @@
 
     namespace OpenLibrary\DOI;
 
+    use OpenLibrary\DOI\DOI\Factory;
+    use OpenLibrary\DOI\RegistrationAgency\DataCite\Profiles\MetadataProfile;
+    use Curl\Curl;
+
     class DOI
     {
 
-        private $directoryIndicator = 10;
-
-        private $registrantCode;
-
-        private $registrantSubdivision;
-
-        function __construct ($rc = null, $sd = null)
-        {
-            $this->registrantCode = $rc;
-            $this->registrantSubdivision = $sd;
-        }
+        function __construct () { }
 
         public function resolve ($doi){
+            $doi = str_replace("doi:","",$doi);
 
+            # well this is pretty crap here
+            $curl = new Curl();
+            $curl->get("http://dx.doi.org/{$doi}");
+
+            $curl->close();
         }
 
-        public function create ($encoded = false){
-            $doi = $this->generate();
+        public function create (MetadataProfile $profile, $encoded = false){
+            // $profile->getPublisherYear();
 
-            if($encoded){
-                $doi = $this->encodeDOI($doi);
-            }
+            $doiFactory = new Factory();
 
-            return $doi;
-        }
-
-        private function generate () {
-            return $this->getPrefix() . "/" . $this->getSuffix();
-        }
-
-        private function getPrefix(){
-            return implode(".",array_filter([$this->directoryIndicator,$this->registrantCode, $this->registrantSubdivision]));
-        }
-
-        private function getSuffix(){
-            return "";
+            return $doiFactory->generate($profile->getPublisherYear(),$profile->getPublisherYear(),$profile->getPublisherYear());// this is wrong
         }
 
         private function encodeDOI($doi){

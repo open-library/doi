@@ -31,7 +31,9 @@
         "monolog/monolog": "Allows more advanced logging of the application flow"
     },
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=5.3.0",
+        "respect/validation": "2.0.x-dev",
+        "php-curl-class/php-curl-class": "3.6.7"
     },
     "autoload": {
         "psr-4": {
