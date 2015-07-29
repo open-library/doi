@@ -11,12 +11,35 @@
 
     class Creator extends GenericProperty
     {
-
+        /**
+         * @var CreatorIdentifier
+         */
         protected $identifier;
 
-        protected $identifierScheme;
+        protected $affiliation;
 
-        protected $identifierSchemeURI;
+        /**
+         * @return mixed
+         */
+        public function getAffiliation() {
+            if(isset($this->affiliation) && count($this->affiliation) > 0){
+                return $this->affiliation;
+            }
+            return false;
+        }
+
+        /**
+         * @param mixed $affiliation
+         */
+        public function setAffiliation($affiliation) {
+            $this->affiliation [] = $affiliation;
+        }
+
+        public function resetAffiliation(){
+            $this->affiliation = [];
+        }
+
+
 
         /**
          * Creator constructor.
@@ -28,22 +51,25 @@
         }
 
         /**
-         * @param string $identifier
-         * @param string $schemeName the name of the identifier scheme e.g. ORCID
-         * @param string $schemeURI the uri of the identifier scheme e.g. http://orcid.org
+         * @return CreatorIdentifier
          */
-        public function setIdentifier ($identifier, $schemeName, $schemeURI)
-        {
-            $this->identifier = $identifier;
-            $this->identifierScheme = $schemeName;
-            $this->identifierSchemeURI = $schemeURI;
+        public function getIdentifier() {
+            if(isset($this->identifier)){
+                return $this->identifier;
+            }
+            return false;
         }
+
+        /**
+         * @param CreatorIdentifier $identifier
+         */
+        public function setIdentifier(CreatorIdentifier $identifier) {
+            $this->identifier = $identifier;
+        }
+
 
         public function getAttributes(){
             return [
-                  'schemeURI' => $this->identifierSchemeURI
-                , 'nameIdentifierScheme' => $this->identifierScheme
             ];
         }
-
     }

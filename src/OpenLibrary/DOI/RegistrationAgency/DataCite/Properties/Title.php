@@ -11,6 +11,13 @@
 
     class Title extends GenericProperty
     {
+        const AlternativeTitle = "AlternativeTitle";
+
+        const Subtitle = "Subtitle";
+
+        const TranslatedTitle = "TranslatedTitle";
+
+
         protected $lang;
 
         protected $type;
@@ -18,7 +25,12 @@
         public function __construct ($value, $type = false) {
             parent::__construct($value);
             if($type){
-                $this->type=$type;
+                if(defined($type)){
+                    $this->type=$type;
+                }
+                else {
+                    error_log("Title::{$type} not found in class OpenLibrary\\DOI\\RegistrationAgency\\DataCite\\Properties\\Title");
+                }
             }
         }
 
