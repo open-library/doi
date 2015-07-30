@@ -40,6 +40,8 @@
 
         public function getSuffix ()
         {
+            # prefix be like 10.1234/
+            # this adds on 001.002.2015.1234567
             return implode(".",array_filter([$this->brand,$this->unit, $this->year, $this->autoNumber]));
         }
 

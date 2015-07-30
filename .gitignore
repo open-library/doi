@@ -39,5 +39,11 @@ atlassian-ide-plugin.xml
 vendor/
 vendor/*
 
+
+# All Configuration Files #
+###########################
+config/db.d/*
+!config/db.d/config-db.ini.distribute
+
 # not this file
 !.gitignore
