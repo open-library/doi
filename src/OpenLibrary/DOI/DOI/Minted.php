@@ -30,4 +30,38 @@
         abstract public function getPayload ();
 
         abstract public function getAPIEndpoint ();
+
+        /**
+         * @return mixed
+         */
+        public function getDoi ()
+        {
+            return $this->doi;
+        }
+
+        /**
+         * @param mixed $doi
+         */
+        public function setDoi ($doi)
+        {
+            $this->doi = $doi;
+        }
+
+        /**
+         * @return mixed
+         */
+        public function getUri ()
+        {
+            return $this->uri;
+        }
+
+        /**
+         * @param mixed $uri
+         */
+        public function setUri ($uri)
+        {
+            $this->uri = $uri;
+        }
+
+
     }
