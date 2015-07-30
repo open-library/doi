@@ -6,11 +6,8 @@
      * Time: 22:46
      */
     namespace OpenLibrary\DOI\RegistrationAgency\DataCite;
-    class Minted {
 
-        protected $doi;
-
-        protected $uri;
+    class Minted extends \OpenLibrary\DOI\DOI\Minted {
 
         /**
          * Minted constructor.
@@ -20,9 +17,7 @@
          */
         public function __construct($doi, $uri) {
 
-            $this->doi = $doi;
-
-            $this->uri = $uri;
+            parent::__construct($doi,$uri);
         }
 
         public function getPayload () {
@@ -33,4 +28,5 @@
         public function getAPIEndpoint () {
             return 'https://mds.datacite.org/doi';
         }
+
     }

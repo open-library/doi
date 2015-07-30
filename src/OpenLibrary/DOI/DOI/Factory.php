@@ -17,20 +17,16 @@
 
         private $registrantSubdivision;
 
-        function __construct ($rc = null, $sd = null)
-        {
+        function __construct ($rc = null, $sd = null) {
             $this->registrantCode = $rc;
             $this->registrantSubdivision = $sd;
         }
 
-        public function generate($brand, $unit, $year){
-
-            $doiNameGenerator = new Suffix($brand, $unit, $year);
-
+        public function generate(Suffix $doiNameGenerator) {
             return $this->getPrefix() . "/" . $doiNameGenerator->getSuffix();
         }
 
-        private function getPrefix(){
+        private function getPrefix() {
             return implode(".",array_filter([$this->directoryIndicator,$this->registrantCode, $this->registrantSubdivision]));
         }
     }
