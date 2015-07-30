@@ -26,4 +26,14 @@
             return implode(".",array_filter([$this->autoNumber]));
         }
 
+        /**
+         * @return int
+         */
+        public function getAutoNumber ()
+        {
+            return $this->autoNumber;
+        }
+
+
+
     }

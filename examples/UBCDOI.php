@@ -60,4 +60,34 @@
 
             return $ret;
         }
+
+        private function updateDoiRecord ($id, $doi, $url){
+            $config = parse_ini_file( __DIR__ . "/../../../../bin/db.d/config-doi-db.ini");
+
+            try {
+                R::setup(
+                    $config['db_hand']. ":host=" .  $config['db_host'] . ";dbname=" . $config['db_name']
+                    , $config['db_user']
+                    , $config['db_pass']
+                );
+            } catch (\Exception $e){
+                error_log($e->getMessage());
+                die;
+            }
+
+            R::exec("SET search_path TO uat");
+
+            try {
+                $record = R::load( $config['db_tabl'], $id );
+            } catch (\Exception $e){
+                error_log("DOi Error - unable to update doi and url for db record row: {$id}");
+                error_log($e->getMessage());
+                die;
+            }
+
+            $record->doi    = $doi;
+            $record->url    = $url;
+
+            $autoNumber = R::store($record);
+        }
     }
