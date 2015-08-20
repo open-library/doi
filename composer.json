@@ -34,7 +34,7 @@
         "php": ">=5.3.0",
         "respect/validation": "@stable",
         "gabordemooij/redbean": "@stable",
-        "php-curl-class/php-curl-class": "3.6.7"
+        "php-curl-class/php-curl-class": "@stable"
     },
     "autoload": {
         "psr-4": {
